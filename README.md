@@ -10,10 +10,20 @@ FarmShift is a minimal, farmer-first prototype for the 2026 NASA Space Apps Chal
 - NASA POWER recent meteorological context
 - Transparent crop-rotation heuristic using water, soil, heat, weather and diversity signals
 - NASA Worldview launch point
-- 8-language selector foundation
+- 13-language selector with full-page translation widget
+- Supabase Auth integration (email/password, email confirmation and password reset; requires provider setup)
+- Cloudflare Turnstile CAPTCHA integration (requires provider-side secret configuration)
+- Per-user cloud workspace sync with PostgreSQL Row Level Security (SQL schema included; requires Supabase setup)
+- Guest mode remains available without an account
 - Farmer assistant chat UI
 - Field-photo preview
 - Static, dependency-free app: no npm or build step
+
+## Secure accounts and translation setup
+
+The account UI is wired to Supabase Auth, Cloudflare Turnstile and a private per-user cloud-data table, but **it is not active until provider credentials are configured**. Follow [`SETUP.md`](SETUP.md) step by step and run [`supabase/schema.sql`](supabase/schema.sql) in the Supabase SQL Editor. Only the public Supabase URL/anon key and Turnstile site key belong in `supabase-config.js`; never commit service-role or CAPTCHA secret keys.
+
+The language selector includes Punjabi, Hindi, Bengali, Tamil, Telugu, Marathi, Gujarati, Kannada, Malayalam, Urdu, Odia and Assamese. Full-page translation uses a third-party browser translation widget and may require internet access; important farming and safety text still needs native-speaker review.
 
 ## Run
 
